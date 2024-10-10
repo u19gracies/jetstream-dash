@@ -13,3 +13,4 @@ class MoveBird:
     def birdUp(self):
         self.player.move_ip(0, -self.moveSpeed)
 
+##test
