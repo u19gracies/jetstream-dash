@@ -17,8 +17,8 @@ class MoveBody:
 
     def updateBird(self):
         self.speed += 0.2
-        if self.speed > 5:
-            self.speed = 5
+        if self.speed > 6:
+            self.speed = 6
 
         if self.y < 620 and self.y > 20:
             self.y += int(self.speed)
