@@ -1,4 +1,4 @@
-from movingObjects import MoveBird
+from movingObjects import MoveBody
 import pygame
 import time
 
@@ -14,7 +14,7 @@ jump = False
 
 screen = pygame.display.set_mode(size=(screenWidth, screenHeight)) 
 pBody = pygame.Rect(50,50,50,50)
-p1 = MoveBird(200,200,5, 1, pBody)
+p1 = MoveBody(200,200,5, 1, pBody)
 
 
 while True:
