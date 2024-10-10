@@ -13,11 +13,10 @@ jumping = False
 
 screen = pygame.display.set_mode(size=(screenWidth, screenHeight))
 pBody = pygame.Rect(50,50,50,50)
-p1 = MoveBird(5, 1, pBody, screen, jumping)
+p1 = MoveBird(5, 1, pBody, screen)
 
 
 while run:
-    print(jumping)
     time.sleep(0.001)
 
     screen.fill((0,0,0))
