@@ -7,36 +7,24 @@ pygame.init()
 screenWidth = 1280
 screenHeight = 720
 speed = 0.25
+clock = pygame.time.Clock()
 
-run = True
-jumping = False
 
-screen = pygame.display.set_mode(size=(screenWidth, screenHeight))
+jump = False
+
+screen = pygame.display.set_mode(size=(screenWidth, screenHeight)) 
 pBody = pygame.Rect(50,50,50,50)
-p1 = MoveBird(5, 1, pBody, screen)
+p1 = MoveBird(200,200,5, 1, pBody)
 
 
-while run:
-    time.sleep(0.001)
+while True:
+    clock.tick(60)
 
-    screen.fill((0,0,0))
-    
-    p1.gravityEffect()
-    pygame.draw.rect(screen, (255,0,0), pBody)
+    p1.updateBird()
+    p1.draw(screen)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            run = False
-
-    key = pygame.key.get_pressed()
-    if key[pygame.K_SPACE] == True:
-        if not jumping:
-            p1.birdUp()
-            jumping = True
-
-    if not key[pygame.K_SPACE]:
-        jumping = False
+            pygame.quit()
         
     pygame.display.update()
-
-pygame.quit()
