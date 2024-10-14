@@ -1,13 +1,13 @@
 import time
 import pygame
+import random
 
 class MoveBody:
-    def __init__(self, x, y, moveSpeed, gravity, player):
+    def __init__(self, x, y, moveSpeed, gravity):
         self.x = x
         self.y = y
         self.moveSpeed = moveSpeed
         self.gravity = gravity
-        self.player = player
         self.speed = 0
         self.cFrame = 0
         self.clock = pygame.time.Clock()
@@ -31,6 +31,8 @@ class MoveBody:
         self.speed += 0.2
         if self.speed > 6:
             self.speed = 6
+        if self.speed < -5:
+            self.speed = -5
 
         if self.y < 590 and self.y > 52:
             self.y += int(self.speed)
@@ -42,3 +44,31 @@ class MoveBody:
             self.prop=True
         else:
             self.prop=False
+
+class CreateObstacle:
+    def __init__(self, obstacle, img, add):
+        self.randu = random.randint(1,315)
+        self.randd = random.randint(1,315-self.randu)
+        self.obstacle = obstacle
+        self.rect = img.get_rect()
+        self.x = 1000 + add
+        self.yD = 600
+        self.yU = -450
+
+    
+    def moveU(self, screen):
+        screen.blit(self.obstacle.createObstacleSprite(), (self.x,self.yD-self.randu))
+        self.x -= 2
+        if self.x < -300:
+            self.x = 1300
+            self.randu = random.randint(1,315)
+            self.randd = random.randint(1,315-self.randu)
+            
+
+    def moveD(self, screen):
+        screen.blit(self.obstacle.createObstacleSprite(), (self.x,self.yU+self.randd))
+        self.x -= 2
+        if self.x < -300:
+            self.x = 1300
+            self.randu = random.randint(1,315)
+            self.randd = random.randint(1,315-self.randu)
