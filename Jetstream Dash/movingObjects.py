@@ -3,7 +3,7 @@ import pygame
 import random
 
 class MoveBody:
-    def __init__(self, x, y, moveSpeed, gravity):
+    def __init__(self, x, y, moveSpeed, gravity, imgs):
         self.x = x
         self.y = y
         self.moveSpeed = moveSpeed
@@ -12,8 +12,10 @@ class MoveBody:
         self.cFrame = 0
         self.clock = pygame.time.Clock()
         self.prop = False
+        self.imgs = imgs
+        self.rect = imgs[0].rect
 
-    def draw(self, screen, jetpacks, background):
+    def draw(self, screen, background):
         if self.prop:
             if self.cFrame >= 12:
                 self.cFrame=0
@@ -23,7 +25,7 @@ class MoveBody:
         
 
         screen.blit(background, (0,0))
-        screen.blit((jetpacks[self.cFrame].createSprite()).convert_alpha(), (self.x,self.y))
+        screen.blit((self.imgs[self.cFrame].createSprite()).convert_alpha(), (self.x,self.y))
         screen.set_colorkey((0,0,0))
 
     def updatePlayer(self):
@@ -46,14 +48,14 @@ class MoveBody:
             self.prop=False
 
 class CreateObstacle:
-    def __init__(self, obstacle, img, add):
+    def __init__(self, obstacle, add, img):
         self.randu = random.randint(1,315)
         self.randd = random.randint(1,315-self.randu)
         self.obstacle = obstacle
-        self.rect = img.get_rect()
         self.x = 1000 + add
         self.yD = 600
         self.yU = -450
+        self.rect = img.get_rect()
 
     
     def moveU(self, screen):
