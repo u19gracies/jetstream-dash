@@ -11,7 +11,7 @@ class HandleSprite(pygame.sprite.Sprite):
     self.height = height
     self.width = width
     self.scale = scale
-    self.rect = self.img.get_rect()
+    self.rect = img.get_rect()
 
   def createObstacleSprite(self):
     sprite = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
