@@ -17,12 +17,10 @@ timer=0
 screen = pygame.display.set_mode((screenWidth, screenHeight)) 
 pygame.display.set_caption("Jetstream Dash")
 
-#spriteSheet = pygame.image.load("sSheet.png").convert_alpha()
 fuelImage = pygame.image.load("fuelCan.png").convert()
 obstacleImage = pygame.image.load("obstacle.png").convert()
 background = pygame.image.load("bg.png").convert()
 
-#jetpacks = [jetpack0,jetpack0,jetpack0,jetpack0,jetpack0,jetpack0,jetpack1,jetpack1,jetpack1,jetpack1,jetpack1,jetpack1,jetpackOff]
 fuelCan = HandleSprite(0,fuelImage,32,32,1.5)
 
 player = MoveBody(200,200,5,1)
