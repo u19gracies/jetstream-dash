@@ -12,12 +12,6 @@ class HandleSprite(pygame.sprite.Sprite):
     self.scale = scale
     self.rect = self.spritesheet.get_rect()
 
-  def createObstacleSprite(self):
-    sprite = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
-    sprite.blit(self.spritesheet, (0, 0), (0, self.frame*self.height, self.width*1.5, self.height))
-    sprite = pygame.transform.scale(sprite, (self.width, self.height * self.scale))
-    return sprite
-
   def createSprite(self):
     sprite = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
     sprite.blit(self.spritesheet, (0, 0), (0, self.frame*self.height, self.width, self.height))
