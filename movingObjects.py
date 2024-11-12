@@ -1,6 +1,4 @@
-import time
 import pygame
-import random
 from spriteHandler import HandleSprite
 
 class MoveBody(pygame.sprite.Sprite):
@@ -49,27 +47,23 @@ class MoveBody(pygame.sprite.Sprite):
         screen.blit((self.images[self.index].createSprite()).convert_alpha(), (self.x,self.y))
         screen.set_colorkey((0,0,0))
 
-        #pygame.draw.rect(screen, (255,255,255), self.rect)
-
 
     def updatePlayer(self, spriteList, canFly):
         
         self.speed += 0.2
-        if self.speed > 6:
-            self.speed = 6
-        if self.speed < -5:
-            self.speed = -5
+        if self.speed > 10:
+            self.speed = 10
+        if self.speed < -20:
+            self.speed = -20
 
         self.y += int(self.speed)
 
         if pygame.key.get_pressed()[pygame.K_SPACE] == True and canFly:
-            self.speed -= 0.4
+            self.speed -= 0.6
             self.prop=True
         else:
             self.prop=False
 
-        # for i in spriteList:
-        #     print(pygame.Rect.colliderect(self.rect, i[1].rect))
 
 class CreateUpper(pygame.sprite.Sprite):
     def __init__(self, obstacle, img,rand):
